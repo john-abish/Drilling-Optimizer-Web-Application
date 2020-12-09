@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>John's ROP Optimizer</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1 ALIGN=Center>Drilling ROP Predictor</h1>
+   <br><BLOCKQUOTE>
+   ROP model created from Volve field data based on the 15/9-F-15 appraisal well.
+   <br>
+   <br>
+
+    <form action="{{ url_for('predict')}}"method="post">
+    <input type="text" name="WOB" placeholder="Weight on Bit [lbs]" max="17000" min="10000" required="required" />
+    <label for ='WOB' font-size=2px>Enter B/W 10000 and 17000 lbs </label><br><br>
+    <input type="text" name="RPM" placeholder="Bit RPM [rpm]" max="100" min="140" required="required" />
+    <label for ='RPM'>Enter B/W 100 and 140 rpm</label><br><br>
+		<input type="text" name="Q" placeholder="Mud Flow Rate [gpm]" max="1170" min="1180" required="required" />
+    <label for ='Q'>Enter B/W 1170 and 1180 gpm</label><br><br>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button><br>
+    
+
+
+        
+    </form>
+
+    <br>
+    <br>
+    {{ prediction_text }}
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p><a href=https://github.com/john-abish target="_blank"><button class=grey style="height:25px;width:125px">Source Code</button></a></p>{{ redirect_text }}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    By
+    <br>
+    John Abish</BLOCKQUOTE>
+ </div>
+
+
+</body>
+</html>
