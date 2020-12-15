@@ -1,62 +1,314 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-  <meta charset="UTF-8">
-  <title>John's ROP Optimizer</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Home - ROP Optimization</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <style>
+body {
+  overflow-x:hidden;
+  background-image: url('background-with-white-wall-texture.png');
+  background-size: cover;
+
+  height: 100%;
+  width: 100%;
+  margin: 0;
+
+}
+#content {
+  min-height: calc(100vh);
+}
+.button1 {
+  border-radius: 10px;
+  background-color: Transparent;
+  border-color: white;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 75%;
+  position: absolute;
   
-</head>
 
-<body>
- <div class="login">
-	<h1 ALIGN=Center>Drilling ROP Predictor</h1>
-   <br><BLOCKQUOTE>
-   ROP model created from Volve field data based on the 15/9-F-15 appraisal well.
-   <br>
-   <br>
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
 
-    <form action="{{ url_for('predict')}}"method="post">
-    <input type="text" name="WOB" placeholder="Weight on Bit [lbs]" max="17000" min="10000" required="required" />
-    <label for ='WOB' font-size=2px>Enter B/W 10000 and 17000 lbs </label><br><br>
-    <input type="text" name="RPM" placeholder="Bit RPM [rpm]" max="100" min="140" required="required" />
-    <label for ='RPM'>Enter B/W 100 and 140 rpm</label><br><br>
-		<input type="text" name="Q" placeholder="Mud Flow Rate [gpm]" max="1170" min="1180" required="required" />
-    <label for ='Q'>Enter B/W 1170 and 1180 gpm</label><br><br>
-    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button><br>
-    
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.button1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button1:hover span {
+  padding-right: 25px;
+}
+
+.button1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.button2 {
+  border-radius: 10px;
+  background-color: transparent;
+  border-color: white;
+  color: white;
+  text-align: center;
+  font-size: 28px;
+  padding: 5px;
+  width: 75%;
+
+  position: absolute;
+  
+
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.button2 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button2 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button2:hover span {
+  padding-right: 25px;
+}
+
+.button2:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.darken {
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    )
+}
+.cont {
+	size: 100%;
+	margin-bottom: 0px;
+	margin: 0px;
+	border: 0px;
+	padding: 0px;
+}
+
+	
+	.my-jumbotron {
+  background-color: transparent;
+  color: black;
+ 
+
+ 	}
+	
+
+	.my-row {
+		padding-top: 50px;
+		padding-bottom: 30px;
+
+	}
+
+	.my-col2 {
+  background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("maersk-intrepid-6-vessel.jpg");
+  background-size: cover;
+
+  height: 300px;
+  width: 250px;
+	}
+	.my-col3 {
+  background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("starling.jpg");
+  background-size: cover;
+  padding-left: 20px;
+  height: 300px;
+  width: 250px;
+	}
+	.my-col4 {
+  background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("forest.jpg");
+  background-size: cover;
+
+  height: 300px;
+  width: 250px;
+	}
+	
+	.my-col5 {
+  background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("binary.jpg");
+  background-size: cover;
+
+  height: 300px;
+  width: 250px;
+	}
+	.my-col11 {
+  background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("Minimalist.png");
+  background-size: cover;
+
+  height: 300px;
+  width: 250px;
+	}
+
+	.my-col12 {
+  background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("drilformance-leader-one.jpg");
+  background-size: cover;
+
+  height: 300px;
+  width: 250px;
+	}
+
+	.my-col13 {
+  background-image:     linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("Minimalist.png");
+  background-size: cover;
+
+  height: 300px;
+  width: 250px;
+	}
+
+</style>
+
+ 
+ 
+  <body>
 
 
-        
-    </form>
+<div class="min-vh-100">
+	
+	 <div class="container-fluid cont" bis_skin_checked="1">
+	<div class="row my-row justify-content-around " bis_skin_checked="1">
+		<div class="col-4 my-col11 " bis_skin_checked="1">
 
-    <br>
-    <br>
-    {{ prediction_text }}
+			<p>
+        <form action="{{ url_for('predict_page')}}" method="post">
+        <button type="submit" class="button2" ><span>Predict ROP</span></button>
+      </form>
+			</p>
+		</div>
+		<div class="col-4" bis_skin_checked="1">
+			<div class="jumbotron my-jumbotron">
+				<h2>
+					DRILLING ROP OPTIMIZER
+				</h2>
+				<p>
+          <b>ROP Prediction:</b> Random forest regressor used to create the ROP model from real time field data.
+          <br>
+          <b>ROP Optimization:</b> Particle Swarm Optimization used to optimize the random forest regression model. 
+          <br> 
+          <br>
+          <br>Click the links below to know more about the model.     
+				</p>
+			</div>
+		</div>
+		<div class="col-4 my-col12 " bis_skin_checked="1">
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <p><a href=https://github.com/john-abish/Drilling-Optimizer-Web-Application target="_blank"><button class=grey style="height:25px;width:125px">Source Code</button></a></p>{{ redirect_text }}
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    By
-    <br>
-    John Abish</BLOCKQUOTE>
- </div>
+			<p>
+        <form action="{{ url_for('optimize')}}" method="post">
+        <button class="button2"><span>Optimize ROP</span></button>
+      </form>
+			</p>
+		</div>
+  </div>
+  
+	<div class="row my-row2 cont" bis_skin_checked="1">
+		<div class="col-md-3 my-col2 " bis_skin_checked="1">
+			<p>
+        <form action="{{ url_for('volve')}}" method="post">
+        <button class="button1"><span>Data Source</span></button>
+      </form>
+			</p>
+		</div>
+		<div class="col-md-3 my-col3 " bis_skin_checked="1">
+			<p>
+        <form action="{{ url_for('pso')}}" method="post">
+        <button class="button1"><span>Particle Swarm</span></button>
+      </form>
+			</p>
+		</div>
+		<div class="col-md-3 my-col4 " bis_skin_checked="1">
+			<p>
+        <form action="{{ url_for('rf')}}" method="post">
+        <button class="button1"><span>Random Forest</span></button>
+      </form>
+			</p>
+		</div>
+		<div class="col-md-3 my-col5 " bis_skin_checked="1">
+			<p>
+        <form action="{{ url_for('about')}}" method="post">
+          <button class="button1"><span>About the Project</span></button>
+        </form>
+			</p>
+		</div>		
+
+	</div>
+	</div>
+
+</div>
 
 
-</body>
-</html>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+</html>	

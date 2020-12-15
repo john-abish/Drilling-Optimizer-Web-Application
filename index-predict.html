@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Predict - ROP Optimization</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <style>
+body, html {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("lit-rig.jpg");
+
+  /* Control the height of the image */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  right: 0;
+  margin: 150px;
+  width: 500px;
+  padding: 16px;
+  background-color: white;
+  margin-top: 50px;
+}
+
+/* Full-width input fields */
+  input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #ac5301;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+#myBtn {
+  width: 50%;
+  margin-left: 25%;
+  font-size: 18px;
+  padding: 10px;
+  border-color: white;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+.my-h2{ 
+    font-size:15pt;
+    text-align: center;
+
+}
+
+
+</style>
+
+<body>
+  <div class="bg-img">
+    <form action="{{ url_for('predict')}}" method="post" class="container">
+      <h2 class="my-h2">
+        Prediction for Equinor 15/9-F-15 appraisal well.
+      </h2>
+      <br>       
+      <label for="WOB"><b>Weight on Bit [lbs] Constraints: 10000 to 17000 lbs</b></label>
+      <input type="text" placeholder="Enter B/W 10000 and 17000 lbs" name="WOB" required>
+  
+      <label for="RPM"><b>Bit RPM [rpm] Constraints: 100 to 140 rpm</b></label>
+      <input type="text" placeholder="Enter B/W 100 and 140 rpm" name="RPM" required>
+      
+      <label for="Q"><b>Mud Flow Rate [gpm] Constraints: 1170 to 1180 gpm</b></label>
+      <input type="text" placeholder="Enter B/W 1170 and 1180 gpm" name="Q" required>
+  
+      {{const_text}}<b>{{ prediction_text }}</b>
+      <br>
+ 
+      <br>
+  
+      <button type="submit" class="btn">Predict</button><br><br><button id="myBtn" onclick="location.href = '/home';">Back</button>
+    </form>
+  </div
+
+
+  </body>
+</html>	

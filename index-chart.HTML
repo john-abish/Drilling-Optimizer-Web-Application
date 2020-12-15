@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Optimize - ROP Optimization</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" rel="stylesheet">
+    <link href="Opacity.css" rel="stylesheet">
+
+</head>
+<body>
+<style>
+
+body {
+  overflow-x:hidden;
+  background-image:linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url('Oil-Drill-Pipes.jpg');
+  background-size: cover;
+ 
+}
+  .cont {
+
+
+	padding-top: 50px;
+    margin: 0%;
+    padding-left: 20px;
+}
+
+.my-h2{ 
+    margin-top: 20px;
+    font-size:15pt;
+    text-align: center;
+
+}
+.my-card{ 
+    text-align:center;
+
+
+}
+.btn {
+  background-color:rgb(230, 7, 53);
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 75%;
+  opacity: 0.9;
+  
+}
+
+.btn:hover {
+  opacity: 1;
+}
+#myBtn {
+  width: 50%;
+ 
+  font-size: 18px;
+  padding: 10px;
+  border-color: white;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+
+
+  </style>
+
+<div class="container-fluid cont">
+    <div class="row">
+        <div class="col-9">
+            <div class="card">
+                <div class="card-body">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+			<div class="card my-card">
+				<h2 class="my-h2">
+					<b>ROP OPTIMIZATION</b>
+				</h2>
+				<p>
+                    <br>
+                    <b>The optimzer runs from a depth of 5340 ft to 5940 ft.</b><br><br>
+
+        <b>Weight on Bit Constraints:</b>  
+          <br>
+          10000 to 17000 lbs
+          <br>
+          <br>
+          <b>Drill RPM Constraints:</b>  
+          <br>
+          100 to 140 rpm
+          <br>
+          <br>
+          <b>Mudd Flow Rate Constraints:</b>
+          <br>
+          1170 to 1180 gpm
+          <br> 
+          <br>
+          <b>True Vertical Depth:</b>
+          <br>
+          5340 to 5940 m
+          <br> 
+<br><!--button type="submit" class="btn" id="target">Optimize</button><br><br--><button id="myBtn" onclick="location.href = '/home';">Back</button>     
+				</p>
+			</div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<!--suppress JSUnresolvedLibraryURL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+
+        const config = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Optimized ROP",
+                    backgroundColor: 'rgb(230, 7, 53)',
+                    borderColor: 'rgb(230, 7, 53)',
+                    data: [],
+                    fill: false,
+                }, {
+                    label: "Observed ROP",
+                    backgroundColor: 'rgb(0, 0, 0)',
+                    borderColor: 'rgb(0, 0, 0)',
+                    data: [63.22728805, 
+ 65.49586074, 
+ 62.83675967,
+ 61.82097241,
+ 60.80698287,
+ 62.55464243,
+ 64.41822554,
+ 58.77768368,
+ 65.15670011,
+ 65.06345376,
+ 61.66811569,
+ 61.87008993,
+ 56.1344304,
+ 65.58980278,
+ 62.61637245,
+ 60.38719129,
+ 59.15141657,
+ 61.22883939,
+ 55.01880311,
+ 65.25347879,
+ 62.28826813,
+ 65.37651431,
+ 47.62867845,
+ 62.69490535,
+ 57.30921885,
+ 61.26606765,
+ 57.45959204,
+ 58.58430621,
+ 55.69126598,
+ 54.31645957,
+ 54.30360213,
+ 60.19143629,
+ 62.86869177,
+ 57.18462845,
+ 48.36526329,
+ 54.90257679,
+ 54.88684001,
+ 55.30658461,
+ 56.11674257,
+ 63.14691012,
+ 63.48711161,
+ 63.27585457,
+ 64.43443274,
+ 66.92476952,
+ 66.88458438,
+ 66.69121641,
+ 65.28575826,
+ 53.89475797,
+ 66.02857064,
+ 65.08451157,
+ 63.30845051,
+ 63.2124625,
+ 63.20427347,
+ 63.2557774,
+ 66.61854288,
+ 66.41557955,
+ 66.88882032,
+ 66.44024916,
+ 54.25822262,
+ 57.10529046,
+ 53.1],
+                    fill: false,
+                }],
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Optimal ROP VS Observed ROP'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Depth (ft)'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'ROP (ft/h)'
+                        }
+                    }]
+                }
+            }
+        };
+
+        const context = document.getElementById('canvas').getContext('2d');
+
+        const lineChart = new Chart(context, config);
+
+        const source = new EventSource("/chartdata");
+
+        source.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            //if (config.data.labels.length === 20) {
+            //    config.data.labels.shift();
+            //   config.data.datasets[0].data.shift();
+            //}
+            config.data.labels.push(data.value);
+            //config.data.datasets[0].data.push(data.ROP);
+            config.data.datasets.forEach(function(datasets) 
+            {if (datasets.label === "Optimized ROP") {
+        // push the data to update a here
+            datasets.data.push(data.optROP)}
+        //    if (datasets.label === "Observed ROP") {
+        // push the data to update a here
+         //   datasets.data.push(data.oldROP)}
+            }
+            );
+            //config.data.datasets[1].data.push(data.ROP);
+            lineChart.update();
+        }
+    });
+</script>
+</body>
+</html>

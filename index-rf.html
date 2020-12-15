@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>RF - ROP Optimization</title>
+
+    <meta name="description" content="Source code generated using layoutit.com">
+    <meta name="author" content="LayoutIt!">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+  </head>
+  <style>
+    body{
+      overflow-y: hidden;
+    }
+
+
+        .container {
+  position: relative;
+  max-height: 100vh;
+  width: 100%; /* Maximum width */
+  margin: 0px; /* Center it */
+  padding: 0px;
+}
+  
+        .container .content {
+  position: fixed; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  padding: 20px; /* Some padding */
+}
+
+/* Style the button used to create button */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border-color: white;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+.my-cont{
+  position: fixed;
+  bottom: 0;
+
+}
+
+
+</style>
+
+<body>
+  <div class="container">
+
+
+    <img src="forest-large.jpg" alt="Notebook" style="width:100%;">
+
+    <div class="content my-cont">
+      <h1>Randon Forest Regression</h1>
+      <p>A random forest regressor was used to model the ROP function from the drilling data. The regressor used the random forest algorithm to calculate a regression function which depends on WOB, N and Q. A fixed number of decision trees were created which established a relationship between the input variables and the desired output. The algorithm made use of supervised learning and worked as a predictor for regression analysis. The algorithm also had various hyperparameters, including the number of estimators, maximum number of features, and the maximum depth of the tree. These hyperparameters were selected through cross validation of the function. The randomized search cross-validation method was used to obtain the optimal hyperparameter values. After cross validation, the number of estimators was set to 400, the maximum number of features to two, and the maximum depth to ten.
+
+      </p>
+      <button id="myBtn" onclick="location.href = '/home';">Back</button>
+    </div>
+  </div>
+
+
+
+  </body>
+</html>	
